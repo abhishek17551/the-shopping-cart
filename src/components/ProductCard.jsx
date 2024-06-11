@@ -5,7 +5,7 @@ import Rating from './Rating'
 import { CartState } from '../context/Context'
 
 const ProductCard = ({prod}) => {
-  const {state:{cart}, dispatch} = CartState();
+  const {state:{cart}, dispatch} = CartState()   ;
   return (
     <div className='products'>
         <Card>
