@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { CartState } from '../context/Context'
-import { Button, Col, Image, ListGroup, Row } from 'react-bootstrap'
+import { Button, Col, Form, Image, ListGroup, Row } from 'react-bootstrap'
 import { AiFillDelete } from 'react-icons/ai'
 import Rating from './Rating'
 import './styles.css'
@@ -33,6 +33,23 @@ const Cart = () => {
                     <Rating rating={prod.ratings} />
                   </Col>
                   <Col md={2}>
+                    <Form.Control 
+                      as='select' 
+                      value={prod.qty}
+                      onChange={(e) => dispatch({
+                        type : 'CHANGE_CART_QTY',
+                        payload : {
+                          id : prod.id,
+                          qty : e.target.value
+                        }
+                      })}  
+                    >
+                      {
+                        [...Array(prod.inStock).keys()].map((x) => (
+                          <option key={x+1}>{x+1}</option>
+                        ))
+                      }
+                    </Form.Control>
                     <Button
                       type="button"
                       variant="light"
